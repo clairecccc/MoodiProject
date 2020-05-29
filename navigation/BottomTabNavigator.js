@@ -4,6 +4,9 @@ import * as React from 'react';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import MoodScreen from '../screens/MoodScreen'
+import HappeningsScreen from '../screens/HappeningsScreen'
+import ProfileScreen from '../screens/ProfileScreen'
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -21,31 +24,31 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={HomeScreen}
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-home" />,
         }}
       />
       <BottomTab.Screen
         name="Mood"
-        component={LinksScreen}
+        component={MoodScreen}
         options={{
           title: 'Mood',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-happy" />,
         }}
       />
        <BottomTab.Screen
         name="Happenings"
-        component={LinksScreen}
+        component={HappeningsScreen}
         options={{
           title: 'Happenings',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-wine" />,
         }}
       />
        <BottomTab.Screen
         name="Profile"
-        component={LinksScreen}
+        component={ProfileScreen}
         options={{
           title: 'Profile',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
         }}
       />
     </BottomTab.Navigator>
@@ -57,8 +60,12 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+      return 'Home';
+    case 'Mood':
+      return 'Mood';
+    case 'Happenings':
+      return 'Happenings';
+    case 'Profile':
+      return 'Your Profile';
   }
 }
