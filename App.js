@@ -16,7 +16,7 @@ class App extends React.Component {
 
     this.setStatus = (status) => {
       console.warn("setting status");
-      this.setState({ statuses: this.state.statuses.append(status) });
+      this.setState({ statuses: [status, ...this.state.statuses] });
       // this.setState((state) => ({
       //   theme: state.theme === themes.dark ? themes.light : themes.dark,
       // }));
