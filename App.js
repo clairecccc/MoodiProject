@@ -16,27 +16,44 @@ class App extends React.Component {
 
     // { mood: 'happy' }
     this.setStatus = (status) => {
-      const today = new Date().toISOString().substr(0, 10);
-
-      status.date = today;
-
       //set date as current date
       //if today's data already exisits update don't append
+      const today = new Date().toISOString().substr(0, 10);
 
-      this.setState({ statuses: [status, ...this.state.statuses] });
+      const newState = this.state.statuses;
+
+      if (!newState[today]) {
+        newState[today] = {
+          date: today,
+        };
+      }
+
+      newState[today] = Object.assign(newState[today], status);
+
+      this.setState({ statuses: newState });
     };
+
+    // if object already exists replace object, can't have undefined
 
     // State also contains the updater function so it will
     // be passed down into the context provider
     this.state = {
       setStatus: this.setStatus,
-      statuses: [
-        {
+      statuses: {
+        "2020-05-31": {
+          date: "2020-06-31",
+          mood: "happy",
+          booze: "lots",
+        },
+        "2020-05-30": {
           date: "2020-06-30",
           mood: "happy",
         },
-        { date: "2020-06-29", mood: "sad" },
-      ],
+        "2020-05-29": {
+          date: "2020-05-29",
+          mood: "sad",
+        },
+      },
     };
   }
 
