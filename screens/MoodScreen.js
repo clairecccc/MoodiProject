@@ -18,21 +18,27 @@ export default function MoodScreen() {
             label="Sad"
             onPress={() =>
               setStatus({
-                date: "2020-05-30",
-                mood: "happy",
-                exercise: "lots",
+                mood: "sad",
               })
             }
           />
           <OptionButton
             icon="md-happy"
             label="Happy"
-            onPress={() => WebBrowser.openBrowserAsync("https://docs.expo.io")}
+            onPress={() =>
+              setStatus({
+                mood: "happy",
+              })
+            }
           />
           <OptionButton
             icon="md-neutral"
             label="Neutral"
-            onPress={() => WebBrowser.openBrowserAsync("https://docs.expo.io")}
+            onPress={() =>
+              setStatus({
+                mood: "neutral",
+              })
+            }
           />
           <View>
             <Text>"test" {JSON.stringify(statuses)}</Text>

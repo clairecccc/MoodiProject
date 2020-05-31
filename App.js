@@ -14,12 +14,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // { mood: 'happy' }
     this.setStatus = (status) => {
-      console.warn("setting status");
+      const today = new Date().toISOString().substr(0, 10);
+
+      status.date = today;
+
+      //set date as current date
+      //if today's data already exisits update don't append
+
       this.setState({ statuses: [status, ...this.state.statuses] });
-      // this.setState((state) => ({
-      //   theme: state.theme === themes.dark ? themes.light : themes.dark,
-      // }));
     };
 
     // State also contains the updater function so it will
