@@ -21,13 +21,8 @@ export default function HomeScreen() {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          {/* <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>
-                {JSON.stringify(statuses)}
-              </Text>
-            </View> */}
           <Greeting />
-          <TableContainer />
+          <TableContainer statuses={statuses} />
           <HelpLine />
         </ScrollView>
       )}
@@ -46,10 +41,10 @@ const Greeting = () => (
   </Text>
 );
 
-const TableContainer = () => (
+const TableContainer = ({ statuses }) => (
   <View>
     <TableDescription />
-    <Table />
+    <Table statuses={statuses} />
   </View>
 );
 
@@ -57,38 +52,53 @@ const TableDescription = () => (
   <Text style={styles.tableDescription}>Your summary for this week: </Text>
 );
 
-const Table = () => (
-  <View style={styles.table}>
-    <HeaderRow />
-    <DataRow />
-    <DataRow />
-    <DataRow />
-  </View>
-);
+const Table = ({ statuses }) => {
+  const data = Object.values(statuses);
 
-const HeaderRow = () => <View style={styles.row}></View>;
+  const dataRows = data.map((status) => {
+    return <DataRow status={status} />;
+  });
+  return (
+    <View style={styles.table}>
+      <HeaderRow />
+      {dataRows}
+    </View>
+  );
+};
 
-const DataRow = () => (
+const HeaderRow = () => (
   <View style={styles.row}>
-    <Cell>
+    <View style={[styles.cell, styles.headerCell]}>
       <Text>Date</Text>
-    </Cell>
-    <Cell>
+    </View>
+    <View style={[styles.cell, styles.headerCell]}>
       <Text>Mood</Text>
-    </Cell>
-    <Cell>
-      <Text>Booze</Text>
-    </Cell>
+    </View>
+    <View style={[styles.cell, styles.headerCell]}>
+      <Text>Alcohol</Text>
+    </View>
   </View>
 );
 
-const Cell = () => <Text>Cell</Text>;
+const DataRow = ({ status }) => (
+  <View style={styles.row}>
+    <View style={styles.cell}>
+      <Text>{status.date}</Text>
+    </View>
+    <View style={styles.cell}>
+      <Text>{status.mood}</Text>
+    </View>
+    <View style={styles.cell}>
+      <Text>{status.alcohol}</Text>
+    </View>
+  </View>
+);
 
 const HelpLine = () => (
   <View style={styles.helpContainer}>
     <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
       <Text style={styles.helpLinkText}>
-        Need to talk to someone now - Don't hesitate contact the Samaritans
+        Need to talk to someone, don't hesitate contact the Samaritans
       </Text>
     </TouchableOpacity>
   </View>
@@ -134,9 +144,7 @@ const styles = StyleSheet.create({
   table: {},
   row: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    borderColor: "hotpink",
-    borderWidth: 3,
+    borderTopWidth: 1,
   },
   greeting: {
     fontSize: 25,
@@ -146,5 +154,12 @@ const styles = StyleSheet.create({
   tableDescription: {
     fontSize: 20,
     paddingBottom: 15,
+  },
+  cell: {
+    padding: 3,
+    flex: 1,
+  },
+  headerCell: {
+    backgroundColor: "hotpink",
   },
 });
