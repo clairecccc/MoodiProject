@@ -17,21 +17,19 @@ export default function HomeScreen() {
   return (
     <StatusContext.Consumer>
       {({ statuses }) => (
-        <View style={styles.container}>
-          <ScrollView
-            style={styles.container}
-            contentContainerStyle={styles.contentContainer}
-          >
-            <View style={styles.getStartedContainer}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          {/* <View style={styles.getStartedContainer}>
               <Text style={styles.getStartedText}>
                 {JSON.stringify(statuses)}
               </Text>
-            </View>
-            <Greeting />
-            <TableContainer />
-            <HelpLine />
-          </ScrollView>
-        </View>
+            </View> */}
+          <Greeting />
+          <TableContainer />
+          <HelpLine />
+        </ScrollView>
       )}
     </StatusContext.Consumer>
   );
@@ -42,9 +40,10 @@ HomeScreen.navigationOptions = {
 };
 
 const Greeting = () => (
-  <View style={styles.helpContainer}>
-    <Text>Greeting</Text>
-  </View>
+  <Text style={styles.greeting}>
+    Welcome back to Moodi. Make sure to input your mood daily to make the most
+    of the App!
+  </Text>
 );
 
 const TableContainer = () => (
@@ -55,16 +54,35 @@ const TableContainer = () => (
 );
 
 const TableDescription = () => (
-  <View style={styles.helpContainer}>
-    <Text>Table Description </Text>
-  </View>
+  <Text style={styles.tableDescription}>Your summary for this week: </Text>
 );
 
 const Table = () => (
-  <View style={styles.helpContainer}>
-    <Text>Table </Text>
+  <View style={styles.table}>
+    <HeaderRow />
+    <DataRow />
+    <DataRow />
+    <DataRow />
   </View>
 );
+
+const HeaderRow = () => <View style={styles.row}></View>;
+
+const DataRow = () => (
+  <View style={styles.row}>
+    <Cell>
+      <Text>Date</Text>
+    </Cell>
+    <Cell>
+      <Text>Mood</Text>
+    </Cell>
+    <Cell>
+      <Text>Booze</Text>
+    </Cell>
+  </View>
+);
+
+const Cell = () => <Text>Cell</Text>;
 
 const HelpLine = () => (
   <View style={styles.helpContainer}>
@@ -84,77 +102,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center",
+    padding: 10,
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 5,
   },
   welcomeContainer: {
     alignItems: "center",
     marginTop: 10,
     marginBottom: 20,
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: "contain",
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)",
-  },
-  codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
   getStartedText: {
     fontSize: 17,
     color: "rgba(96,100,109, 1)",
     lineHeight: 24,
     textAlign: "center",
-  },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center",
-  },
-  navigationFilename: {
-    marginTop: 5,
   },
   helpContainer: {
     marginTop: 15,
@@ -164,7 +126,25 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14,
+    fontSize: 20,
     color: "#2e78b7",
+    textAlign: "center",
+    backgroundColor: "hotpink",
+  },
+  table: {},
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    borderColor: "hotpink",
+    borderWidth: 3,
+  },
+  greeting: {
+    fontSize: 25,
+    textAlign: "center",
+    paddingBottom: 20,
+  },
+  tableDescription: {
+    fontSize: 20,
+    paddingBottom: 15,
   },
 });
