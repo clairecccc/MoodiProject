@@ -12,6 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import { MonoText } from "../components/StyledText";
 import StatusContext from "../StatusContext";
+import Icon from "../components/Icon";
 
 export default function HomeScreen() {
   return (
@@ -86,10 +87,10 @@ const DataRow = ({ status }) => (
       <Text>{status.date}</Text>
     </View>
     <View style={styles.cell}>
-      <Text>{status.mood}</Text>
+      <Icon name={status.mood} />
     </View>
     <View style={styles.cell}>
-      <Text>{status.alcohol}</Text>
+      <Icon name={status.alcohol} />
     </View>
   </View>
 );

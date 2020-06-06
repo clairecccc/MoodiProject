@@ -43,11 +43,12 @@ class App extends React.Component {
         "2020-05-31": {
           date: "2020-06-31",
           mood: "happy",
-          alcohol: "lots",
+          alcohol: "drink",
         },
         "2020-05-30": {
           date: "2020-06-30",
           mood: "happy",
+          alcohol: "noDrink",
         },
         "2020-05-29": {
           date: "2020-05-29",
