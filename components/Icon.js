@@ -11,11 +11,8 @@ const iconsMap = {
   noDrink: "cross",
 };
 
-const Icon = ({ name, color, size }) =>
-  iconsMap[name] ? (
-    <Entypo name={iconsMap[name]} size={22} color="rgba(0,0,0,0.35)" />
-  ) : (
-    <Text>[{name}]</Text>
-  );
+const Icon = ({ name, color, size }) => (
+  <Entypo name={iconsMap[name]} size={22} color="rgba(0,0,0,0.35)" />
+);
 
 export default Icon;

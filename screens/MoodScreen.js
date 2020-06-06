@@ -41,9 +41,24 @@ export default function MoodScreen() {
               })
             }
           />
-          <View>
-            <Text>"test" {JSON.stringify(statuses)}</Text>
-          </View>
+          <OptionButton
+            icon="drink"
+            label="drink"
+            onPress={() =>
+              setStatus({
+                alcohol: "drink",
+              })
+            }
+          />
+          <OptionButton
+            icon="noDrink"
+            label="noDrink"
+            onPress={() =>
+              setStatus({
+                alcohol: "noDrink",
+              })
+            }
+          />
         </ScrollView>
       )}
     </StatusContext.Consumer>
