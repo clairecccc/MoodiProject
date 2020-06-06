@@ -9,6 +9,9 @@ const iconsMap = {
   neutral: "emoji-neutral",
   drink: "drink",
   noDrink: "cross",
+  friend: "user",
+  friends: "users",
+  noFriend: "remove-user",
 };
 
 const Icon = ({ name, color, size }) => (

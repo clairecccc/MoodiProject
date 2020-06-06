@@ -78,6 +78,9 @@ const HeaderRow = () => (
     <View style={[styles.cell, styles.headerCell]}>
       <Text>Alcohol</Text>
     </View>
+    <View style={[styles.cell, styles.headerCell]}>
+      <Text>Friends</Text>
+    </View>
   </View>
 );
 
@@ -91,6 +94,9 @@ const DataRow = ({ status }) => (
     </View>
     <View style={styles.cell}>
       <Icon name={status.alcohol} />
+    </View>
+    <View style={styles.cell}>
+      <Icon name={status.social} />
     </View>
   </View>
 );

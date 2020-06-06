@@ -5,7 +5,7 @@ import { RectButton, ScrollView } from "react-native-gesture-handler";
 import StatusContext from "../StatusContext";
 import Icon from "../components/Icon";
 
-export default function MoodScreen() {
+export default function InputScreen() {
   return (
     <StatusContext.Consumer>
       {({ statuses, setStatus }) => (
@@ -13,6 +13,10 @@ export default function MoodScreen() {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+          <Text style={styles.introText}>
+            Use the buttons below to record what's happening today
+          </Text>
+          <Text style={styles.questionText}>How are you feeling today?</Text>
           <OptionButton
             icon="happy"
             label="Happy"
@@ -41,6 +45,7 @@ export default function MoodScreen() {
               })
             }
           />
+          <Text style={styles.questionText}> Have you had a drink today?</Text>
           <OptionButton
             icon="drink"
             label="drink"
@@ -56,6 +61,34 @@ export default function MoodScreen() {
             onPress={() =>
               setStatus({
                 alcohol: "noDrink",
+              })
+            }
+          />
+          <Text style={styles.questionText}>Have you socialised today? </Text>
+          <OptionButton
+            icon="friend"
+            label="friend"
+            onPress={() =>
+              setStatus({
+                social: "friend",
+              })
+            }
+          />
+          <OptionButton
+            icon="friends"
+            label="friends"
+            onPress={() =>
+              setStatus({
+                social: "friends",
+              })
+            }
+          />
+          <OptionButton
+            icon="noFriend"
+            label="noFriend"
+            onPress={() =>
+              setStatus({
+                social: "noFriend",
               })
             }
           />
@@ -93,6 +126,15 @@ const styles = StyleSheet.create({
   },
   optionIconContainer: {
     marginRight: 12,
+  },
+  introText: {
+    textAlign: "center",
+    fontSize: 20,
+    padding: 25,
+  },
+  questionText: {
+    fontSize: 15,
+    fontWeight: "bold",
   },
   option: {
     backgroundColor: "#fdfdfd",
