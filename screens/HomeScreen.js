@@ -16,56 +16,20 @@ import StatusContext from "../StatusContext";
 export default function HomeScreen() {
   return (
     <StatusContext.Consumer>
-      {({ statuses, setStatus }) => (
+      {({ statuses }) => (
         <View style={styles.container}>
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}
           >
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={
-                  __DEV__
-                    ? require("../assets/images/robot-dev.png")
-                    : require("../assets/images/robot-prod.png")
-                }
-                style={styles.welcomeImage}
-              />
-            </View>
-
             <View style={styles.getStartedContainer}>
-              <DevelopmentModeNotice />
-
               <Text style={styles.getStartedText}>
                 {JSON.stringify(statuses)}
               </Text>
-
-              <View
-                style={[
-                  styles.codeHighlightContainer,
-                  styles.homeScreenFilename,
-                ]}
-              >
-                <MonoText>screens/HomeScreen.js</MonoText>
-              </View>
-
-              <Text style={styles.getStartedText}>
-                Change any of the text, save the file, and your app will
-                automatically reload.
-              </Text>
             </View>
-
-            <View style={styles.helpContainer}>
-              <TouchableOpacity
-                onPress={handleHelpPress}
-                style={styles.helpLink}
-              >
-                <Text style={styles.helpLinkText}>
-                  Need to talk to someone now - Don't hesitate contact the
-                  Samaritans
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <Greeting />
+            <TableContainer />
+            <HelpLine />
           </ScrollView>
         </View>
       )}
@@ -77,39 +41,43 @@ HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
+const Greeting = () => (
+  <View style={styles.helpContainer}>
+    <Text>Greeting</Text>
+  </View>
+);
 
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
+const TableContainer = () => (
+  <View>
+    <TableDescription />
+    <Table />
+  </View>
+);
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    "https://docs.expo.io/versions/latest/workflow/development-mode/"
-  );
-}
+const TableDescription = () => (
+  <View style={styles.helpContainer}>
+    <Text>Table Description </Text>
+  </View>
+);
+
+const Table = () => (
+  <View style={styles.helpContainer}>
+    <Text>Table </Text>
+  </View>
+);
+
+const HelpLine = () => (
+  <View style={styles.helpContainer}>
+    <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
+      <Text style={styles.helpLinkText}>
+        Need to talk to someone now - Don't hesitate contact the Samaritans
+      </Text>
+    </TouchableOpacity>
+  </View>
+);
 
 function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    "https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change"
-  );
+  WebBrowser.openBrowserAsync("https://www.samaritans.org/");
 }
 
 const styles = StyleSheet.create({
