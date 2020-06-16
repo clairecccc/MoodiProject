@@ -57,7 +57,7 @@ const Table = ({ statuses }) => {
   const data = Object.values(statuses);
 
   const dataRows = data.map((status) => {
-    return <DataRow status={status} />;
+    return <DataRow status={status} key={status.date} />;
   });
   return (
     <View style={styles.table}>

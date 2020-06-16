@@ -9,11 +9,14 @@ export default function InputScreen() {
   return (
     <StatusContext.Consumer>
       {({ statuses, setStatus }) => {
-        const todayStatus = statuses["2020-06-09"] || {};
+        const today = new Date().toISOString().substr(0, 10);
+        const todayStatus = statuses[today] || {};
 
         const todayMood = todayStatus.mood;
         const todayAlcohol = todayStatus.alcohol;
         const todaySocial = todayStatus.social;
+
+        console.log("todayMood", todayMood);
 
         return (
           <ScrollView
@@ -118,6 +121,7 @@ export default function InputScreen() {
 }
 
 function OptionButton({ icon, label, onPress, isLastOption, isSelected }) {
+  console.log(isSelected);
   return (
     <RectButton
       style={[
