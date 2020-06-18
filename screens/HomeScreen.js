@@ -46,7 +46,11 @@ const TableDescription = () => (
 );
 
 const Table = ({ statuses }) => {
-  const data = Object.values(statuses);
+  const data = Object.values(statuses)
+    .sort((a, b) => a.date < b.date)
+    .slice(0, 6);
+
+  //sort array of inputs by date and render first 7 by date
 
   const dataRows = data.map((status) => {
     return <DataRow status={status} key={status.date} />;

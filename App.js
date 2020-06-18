@@ -14,13 +14,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // { mood: 'happy' }
     this.setStatus = (status) => {
       //set date as current date
       //if today's data already exisits update don't append
       const today = new Date().toISOString().substr(0, 10);
 
-      const newState = this.state.statuses;
+      const newState = Object.assign({}, this.state.statuses);
 
       if (!newState[today]) {
         newState[today] = {
@@ -40,12 +39,7 @@ class App extends React.Component {
     this.state = {
       setStatus: this.setStatus,
       statuses: {
-        "2020-05-31": {
-          date: "2020-06-31",
-          mood: "happy",
-          alcohol: "drink",
-        },
-        "2020-05-30": {
+        "2020-06-18": {
           date: "2020-06-18",
           mood: "happy",
           alcohol: "noDrink",
@@ -53,7 +47,37 @@ class App extends React.Component {
         "2020-05-29": {
           date: "2020-05-29",
           mood: "sad",
-          friend: "noFriend",
+          social: "noFriend",
+        },
+        "2020-05-28": {
+          date: "2020-05-28",
+          mood: "sad",
+          social: "noFriend",
+        },
+        "2020-05-27": {
+          date: "2020-05-27",
+          mood: "sad",
+          social: "noFriend",
+        },
+        "2020-05-26": {
+          date: "2020-05-26",
+          mood: "sad",
+          social: "noFriend",
+        },
+        "2020-05-25": {
+          date: "2020-05-25",
+          mood: "sad",
+          social: "noFriend",
+        },
+        "2020-05-24": {
+          date: "2020-05-24",
+          mood: "sad",
+          social: "noFriend",
+        },
+        "2020-05-23": {
+          date: "2020-05-23",
+          mood: "sad",
+          social: "noFriend",
         },
       },
     };
