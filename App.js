@@ -74,11 +74,6 @@ class App extends React.Component {
           mood: "sad",
           social: "noFriend",
         },
-        "2020-05-23": {
-          date: "2020-05-23",
-          mood: "sad",
-          social: "noFriend",
-        },
       },
     };
   }
