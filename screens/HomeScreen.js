@@ -146,9 +146,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#2e78b7",
     textAlign: "center",
-    backgroundColor: "hotpink",
+    backgroundColor: "#78B2E5",
   },
-  table: {},
+  table: {
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
   row: {
     flexDirection: "row",
     borderTopWidth: 1,
@@ -157,16 +160,18 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: "center",
     paddingBottom: 20,
+    paddingTop: 30,
   },
   tableDescription: {
     fontSize: 20,
     paddingBottom: 15,
+    paddingTop: 15,
   },
   cell: {
     padding: 3,
     flex: 1,
   },
   headerCell: {
-    backgroundColor: "hotpink",
+    backgroundColor: "#D5DCDB",
   },
 });
