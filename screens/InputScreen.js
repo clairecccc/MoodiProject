@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     alignSelf: "flex-start",
     marginTop: 1,
+    paddingBottom: 10,
   },
   selected: {
     backgroundColor: "#839870",
